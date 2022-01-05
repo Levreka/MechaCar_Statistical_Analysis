@@ -13,4 +13,5 @@ Our slope is not zero just be looking at the p-value, which is less than 0.05.
 
 Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
 
-Our R-squared value is 71%, which means roughly ~71% of the time the model will predict mpg values correctly. There are probably other factors that were not captured in the datasaet that contribute to the mpg variability of the MechaCar prototypes.
+Our R-squared value is 71%, which means roughly ~71% of the time the model our model will most likely predict MPG values correctly. Some of the Factors that might contribute some of this variability might be ground clearance and vehicle length. There might be other factors that may contribute to the variability that perhaps were not capture in our data 
+
