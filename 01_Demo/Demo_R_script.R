@@ -104,3 +104,12 @@ summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage
 #condition, as well as add the vehicles 
 #in each category, our statement would look as follows:
 summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer),Maximum_Price=max(price),Num_Vehicles=n(), .groups = 'keep') #create summary table with multiple columns
+
+
+#Reshaping data in R gather() and spread()
+
+#looking at gather documentation which is used to transform a wide data set into long
+?gather()
+
+#loading demo2csv file and creating a new demo_table3
+demo_table3 <-read.csv('demo2.csv',check.names = F ,stringsAsFactors = F)
