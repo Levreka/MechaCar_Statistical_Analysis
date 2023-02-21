@@ -113,3 +113,24 @@ summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage
 
 #loading demo2csv file and creating a new demo_table3
 demo_table3 <-read.csv('demo2.csv',check.names = F ,stringsAsFactors = F)
+
+#reshaping demo_table3 from wide format to long format using 
+#gather() this code needs further study i cant understand the buying_price:popularity
+#understanding is gathering- understanding the range is x:y key is metric converting
+#all column names into key on the table and all values of those column names are being place
+#in score spread is working the same way 
+long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popularity)
+
+#using spread to turn a long format data into wide 
+#format
+
+#documentation on spread()
+?spread()
+
+#turning the long table back to wide
+wide_table <- long_table %>% spread(key="Metric",value="Score")
+
+#seeing if our wide table matches our original data
+#this code will give us an error since we need to match all
+#columns to the table 
+all.equal(demo_table3, wide_table)
