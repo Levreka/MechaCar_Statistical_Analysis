@@ -57,3 +57,21 @@ filter_table3 <- demo_table2[("clean" %in% demo_table2$title_status) & (demo_tab
 #how to use sample data in R
 #looking at documentation 
 ?sample()
+
+#one sample from a larger vector to smaller vector
+#using sample
+sample(c("cow", "deer", "pig", "chicken", "duck", "sheep", "dog"), 4)
+
+#how to sample using two dimensional data structures
+#first capture the number of rows in the table using (:) operator
+num_rows <- 1:nrow(demo_table)
+
+#2nd sample 3 of those rows
+sample_rows <-sample(num_rows, 3)
+
+#finally retrieve the requested data 
+demo_table[sample_rows,]
+
+#if we want to combine all 3 steps mention above in 
+#one line of code 
+demo_table[sample(1:nrow(demo_table), 3),]
