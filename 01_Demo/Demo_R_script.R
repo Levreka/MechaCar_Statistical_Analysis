@@ -75,3 +75,32 @@ demo_table[sample_rows,]
 #if we want to combine all 3 steps mention above in 
 #one line of code 
 demo_table[sample(1:nrow(demo_table), 3),]
+
+
+#looking at mutate() beginning tidyverse to 
+#transform data 
+
+#you usually want this at the very top 
+library(tidyverse)
+
+#looking at documentation for mutate()
+?mutate()
+
+#using mutate if we want to use our coworker vehicle data 
+#from the demo_table and add a column 
+#for the mileage per year, as well as 
+#label all vehicles as active, we would 
+#use the following statement
+demo_table <- demo_table %>% mutate(Mileage_per_Year=Total_Miles/(2020-Year),IsActive=TRUE) #add columns to original data frame
+
+
+#starting Group data in order to summarize 
+#dplyr statement: if we want to summarize the used car data
+#by vehicle and determine the average mileage per condition
+summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer), .groups = 'keep') #create summary table
+
+#if in addition to our previous summary table we wanted to 
+#add the maximum price for each 
+#condition, as well as add the vehicles 
+#in each category, our statement would look as follows:
+summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer),Maximum_Price=max(price),Num_Vehicles=n(), .groups = 'keep') #create summary table with multiple columns
