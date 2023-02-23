@@ -149,5 +149,24 @@ view(mpg)
 
 #how to start layering your code for plotting graph
 plt <- ggplot(mpg,aes(x=class)) #import data set into ggplot2
+
 #actually printing visualization
 plt + geom_bar()#plot a bar plot
+
+#viewing geom_bar()documentation
+?geom_bar
+
+#another use for bar plots to compare and contrast
+#categorical results to do this we also need to layer it as follow:
+mpg_summary <- mpg %>% group_by(manufacturer) %>% summarize(Vehicle_Count=n(), .groups = 'keep') #create summary table
+
+plt <- ggplot(mpg_summary,aes(x=manufacturer,y=Vehicle_Count)) #import data set into ggplot2
+
+plt + geom_col() #plot a bar plot
+
+#adding formatting functions to the bar
+plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") #plot bar plot with labels
+plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") + #plot a boxplot with labels
+theme(axis.text.x=element_text(angle=45,hjust=1)) #rotate the x-axis label 45 degrees
+
+
