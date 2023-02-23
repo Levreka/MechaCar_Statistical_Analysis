@@ -170,3 +170,37 @@ plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in D
 theme(axis.text.x=element_text(angle=45,hjust=1)) #rotate the x-axis label 45 degrees
 
 
+#using line graph to visualize relationship between
+#Categorical and continuous data 
+mpg_summary <- subset(mpg,manufacturer=="toyota") %>% group_by(cyl) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep') #create summary table
+plt <- ggplot(mpg_summary,aes(x=cyl,y=Mean_Hwy)) #import data set into ggplot2
+plt + geom_line()#graphing the actual line plot
+plt + geom_line() + scale_x_discrete(limits=c(4,6,8)) + scale_y_continuous(breaks = c(15:30)) #add line plot with labels
+
+#implementing scatter plots in ggplot2
+plt <- ggplot(mpg,aes(x=displ,y=cty)) #import data set into ggplot2
+plt + geom_point() + xlab("Engine Size (L)") + ylab("City Fuel-Efficiency (MPG)") #add scatter plot with labels
+
+#adding formatting to our scatter plot to show
+#more information in a single visualization
+plt <- ggplot(mpg,aes(x=displ,y=cty,color=class)) #import data set into ggplot2
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class") #add scatter plot with labels
+
+#adding extra aesthetics to the graph
+plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv)) #import dataset into ggplot2
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive") #add scatter plot with multiple aesthetics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
