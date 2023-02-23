@@ -134,3 +134,20 @@ wide_table <- long_table %>% spread(key="Metric",value="Score")
 #this code will give us an error since we need to match all
 #columns to the table 
 all.equal(demo_table3, wide_table)
+
+#using R visualization ggplot looking at 
+#documentation first 
+?ggplot
+
+#the mpg data set is build into R and it contains
+#data from fuel economy from 1999
+head(mpg)
+
+#to view entire mpg data it will pop a extra window
+#showing data table
+view(mpg)
+
+#how to start layering your code for plotting graph
+plt <- ggplot(mpg,aes(x=class)) #import data set into ggplot2
+#actually printing visualization
+plt + geom_bar()#plot a bar plot
