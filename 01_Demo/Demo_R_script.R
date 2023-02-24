@@ -186,9 +186,32 @@ plt + geom_point() + xlab("Engine Size (L)") + ylab("City Fuel-Efficiency (MPG)"
 plt <- ggplot(mpg,aes(x=displ,y=cty,color=class)) #import data set into ggplot2
 plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class") #add scatter plot with labels
 
-#adding extra aesthetics to the graph
-plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv)) #import dataset into ggplot2
-plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive") #add scatter plot with multiple aesthetics
+#adding extra aesthetics to the graph like shape and size
+plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv,size=cty)) #import data set into ggplot2
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive", size="City MPG") #add scatter plot with multiple aesthetics
+
+#creating whisker plots 
+plt <- ggplot(mpg,aes(y=hwy)) #import dataset into ggplot2
+plt + geom_boxplot() #add boxplot
+
+
+#expanding the abilities of whisker plots
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy, fill=(manufacturer))) #import dataset into ggplot2
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot and rotate x-axis labels 45 degrees
+
+#changing the color of the whisker plot box 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
