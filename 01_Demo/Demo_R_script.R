@@ -199,31 +199,56 @@ plt + geom_boxplot() #add boxplot
 plt <- ggplot(mpg,aes(x=manufacturer,y=hwy, fill=(manufacturer))) #import dataset into ggplot2
 plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot and rotate x-axis labels 45 degrees
 
-#changing the color of the whisker plot box 
+#using heat maps visualizations
+mpg_summary <- mpg %>% group_by(class,year) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep') #create summary table
+
+plt <- ggplot(mpg_summary, aes(x=class,y=factor(year),fill=Mean_Hwy))#adding the data set to ggplot
+
+plt + geom_tile() + labs(x="Vehicle Class",y="Vehicle Year",fill="Mean Highway (MPG)") #create heat map with labels
+
+#using heat map to show difference in avg hwy fuel efficiency across 
+#each vehicle model from 1999
+mpg_summary <- mpg %>% group_by(model,year) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep') #create summary table
+plt <- ggplot(mpg_summary, aes(x=model,y=factor(year),fill=Mean_Hwy)) #import dataset into ggplot2
+#add heatmap with labels
+plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") +    
+theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5)) #rotate x-axis labels 90 degrees
+
+#using layering to add additional plots to visualizations
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy)) #import dataset into ggplot2
+plt + geom_boxplot() + #add boxplot
+theme(axis.text.x=element_text(angle=45,hjust=1)) + #rotate x-axis labels 45 degrees
+geom_point() #overlay scatter plot on top each dot represents an entry in the hwy data
 
 
+#using mapping to add 
+#to our previous graph 
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ), .groups = 'keep') #create summary table
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine)) #import dataset into ggplot2
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size") #add scatter plot
 
 
+#using dplyr to summarize and create geom_errobar
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ),SD_Engine=sd(displ), .groups = 'keep')
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine)) #import dataset into ggplot2
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size") + #add scatter plot with labels
+geom_errorbar(aes(ymin=Mean_Engine-SD_Engine,ymax=Mean_Engine+SD_Engine)) #overlay with error bars
 
+#using Faceting function 
+mpg_long <- mpg %>% gather(key="MPG_Type",value="Rating",c(cty,hwy)) #convert to long format
+head(mpg_long)
 
+#If we want to visualize the different vehicle fuel efficiency ratings by manufacturer, our R code would be as follows:
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import dataset into ggplot2
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot with labels rotated 45 degrees
 
+#looking at documentation for facet_wrap
+?facet_wrap()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#to facet our previous example by the fuel-efficiency type, our R code could be as follows:
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import dataset into ggplot2
+plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + #create multiple boxplots, one for each MPG type
+theme(axis.text.x=element_text(angle=45,hjust=1),legend.position = "none") + xlab("Manufacturer") #rotate x-axis labels
 
 
 
