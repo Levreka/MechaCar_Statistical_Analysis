@@ -257,4 +257,8 @@ ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density 
 #using Shapiro.test documentation function to view how functions works
 ?shapiro.test()
 
+#running Shapiro.test to check for normality on the built in data set of 
+#mtcars if a p value is return greater than .05 is consider normally distributed
+shapiro.test(mtcars$wt)
+
 
