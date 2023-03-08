@@ -250,5 +250,11 @@ plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import data
 plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + #create multiple boxplots, one for each MPG type
 theme(axis.text.x=element_text(angle=45,hjust=1),legend.position = "none") + xlab("Manufacturer") #rotate x-axis labels
 
+#running qualitative test for normality  from build in 
+#mtcars data set in R
+ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density plot
+
+#using Shapiro.test documentation function to view how functions works
+?shapiro.test()
 
 
