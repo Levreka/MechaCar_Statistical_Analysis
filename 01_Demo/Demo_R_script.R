@@ -315,3 +315,44 @@ aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
 summary(aov(hp ~ cyl,data=mtcars_filt))#to retrieve the p_values we must use this
 #the "Pr(>F)" column, is the same as our p-value the results might come out in scientific notation or E notation
 #you can quickly transform it online calculators
+
+#studying the correlation build in function in r
+?cor()
+
+#practicing the correlation method using mtcars dataset
+head(mtcars)#viewing the data
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() #create scatter plot
+cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient
+
+#another example using correlation
+used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F) #read in dataset
+head(used_cars)#looking at the columns in dataset
+#testing whether or not vehicle miles driven and selling price are correlated.
+plt <- ggplot(used_cars,aes(x=Miles_Driven,y=Selling_Price)) #import dataset into ggplot2
+plt + geom_point() #create a scatter plot
+cor(used_cars$Miles_Driven,used_cars$Selling_Price) #calculate correlation coefficient
+
+#creating a correlation matrix to compute multiple numeric variables since calculating them all
+#individually can be very time consuming
+used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
+cor(used_matrix)
+
+#exploring single linear regression using the built in formula lm()
+?lm()
+
+#begin creating our linear regression using our previous assumption that there is a strong correlation
+#between horsepower and quarter mile times
+lm(qsec ~ hp,mtcars) #create linear model
+summary(lm(qsec~hp,mtcars)) #summarize linear model in order to retrieve our p-value and rsquare
+#plotting our linear analysis and drawing the line
+model <- lm(qsec ~ hp,mtcars) #create linear model
+yvals <- model$coefficients['hp']*mtcars$hp + model$coefficients['(Intercept)'] #determine y-axis values from linear model
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
+
+
+#single model regression not very well to explain variability between horse power and quarter mile times
+#using multiple-linear regression to use more independent variables
+lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model
+summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics
