@@ -262,7 +262,8 @@ ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density 
 shapiro.test(mtcars$wt)
 
 
-#looking at the documentation for function sample_n
+#looking at the documentation for function sample_n this function R is suggesting
+#to move to the new one slice_sample()
 ?sample_n()
 
 #opening new data set from used vehicle data set
@@ -271,5 +272,20 @@ population_table <- read.csv('used_car_data.csv',check.names = F,stringsAsFactor
 plt <- ggplot(population_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
 plt + geom_density() #visualize distribution using density plot
 
+#creating our sample data using sample_n() like our module keep in mind we will later need
+#to start using the new slice_sample
+sample_table <- population_table %>% sample_n(50) #randomly sample 50 data points
+plt <- ggplot(sample_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
+plt + geom_density() #visualize distribution using density plot
 
+#viewing the one sample t-test built in function in R
+?t.test()
 
+#using the previous samples  we want to test if the miles driven from our previous 
+#sample dataset is statistically different from the miles driven in our population 
+#data, we would use our t.test()function as follows: 
+t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means
+# the results provides different measurements but using the p-value which in this case
+#we are using the common p-value .05 we can see that p-value is above our significant lvl
+#therefore we do not have sufficient evidence to reject the null hypothesis the two means
+#are statistically similar
