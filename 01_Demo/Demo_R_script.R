@@ -289,3 +289,29 @@ t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Dri
 #we are using the common p-value .05 we can see that p-value is above our significant lvl
 #therefore we do not have sufficient evidence to reject the null hypothesis the two means
 #are statistically similar
+
+#conducting the two sample t test using the same build in function however
+#now we will also use the y argument in the syntax
+sample_table <- population_table %>% sample_n(50) #generate 50 randomly sampled data points
+sample_table2 <- population_table %>% sample_n(50) #generate another 50 randomly sampled data points
+t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven)) #compare means of two samples
+
+#using now the same t.test function to built a pair test 
+mpg_data <- read.csv('mpg_modified.csv') #import dataset
+mpg_1999 <- mpg_data %>% filter(year==1999) #select only data points where the year is 1999
+mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the year is 2008
+t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
+
+#using aov function to test for ANOVA Test looking at documentation
+?aov()
+
+
+#To practice our one-way ANOVA, return to the mtcars dataset. For this statistical test, we'll 
+#answer the question, "Is there any statistical difference in the horsepower of a vehicle 
+#based on its engine type?"
+mtcars_filt <- mtcars[,c("hp","cyl")] #filter columns from mtcars dataset
+mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
+aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
+summary(aov(hp ~ cyl,data=mtcars_filt))#to retrieve the p_values we must use this
+#the "Pr(>F)" column, is the same as our p-value the results might come out in scientific notation or E notation
+#you can quickly transform it online calculators
