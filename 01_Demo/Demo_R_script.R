@@ -262,3 +262,14 @@ ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density 
 shapiro.test(mtcars$wt)
 
 
+#looking at the documentation for function sample_n
+?sample_n()
+
+#opening new data set from used vehicle data set
+#visualizing the distribution of driven miles for our entire population one example would be:
+population_table <- read.csv('used_car_data.csv',check.names = F,stringsAsFactors = F) #import used car dataset
+plt <- ggplot(population_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
+plt + geom_density() #visualize distribution using density plot
+
+
+
