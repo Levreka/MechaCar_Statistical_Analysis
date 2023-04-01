@@ -356,3 +356,20 @@ plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and li
 #using multiple-linear regression to use more independent variables
 lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model
 summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics
+
+#looking at chisquare test documentations
+?chisq.test()
+
+# if we want to test whether there is a statistical difference in the distributions of vehicle class across 1999 and 2008 
+#from our mpg dataset, we would first need to build our contingency table as follows:
+table(mpg$class,mpg$year) #generate contingency table
+
+#passing  pass contingency table to the chisq.test()function:
+tbl <- table(mpg$class,mpg$year) #generate contingency table
+chisq.test(tbl) #compare categorical distributions
+
+#practicing 
+table(mpg$trans,mpg$drv) #generate contingency table
+
+tbl <- table(mpg$trans,mpg$drv) #generate contingency table
+chisq.test(tbl) #compare categorical distributions
