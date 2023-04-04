@@ -9,6 +9,10 @@ lm(vehicle_length ~ vehicle_weight + spoiler_angle + ground_clearance + AWD + mp
 #generate summary stats
 summary(lm(vehicle_length ~ vehicle_weight + spoiler_angle + ground_clearance + AWD + mpg,data=MechaCar_mpg))
 
+
+
+
+
 ## Deliverable 2 Create Visualizations for the Trip
 
 #  import and read in the Suspension_Coil.csv file as a table.
