@@ -21,6 +21,7 @@ Deliverable 3: T-Test on Suspension Coils
 Deliverable 4: Design a Study Comparing the MechaCar to the Competition
 
 <img width="960" alt="Deliverable_1" src="https://github.com/Levreka/MechaCar_Statistical_Analysis/blob/main/Images/Deliverable_1.png">
+
 Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
 
 Vehicle weight and ground_clearance provide a non-random amount of variance to the mpg values in the data set under the assumption 
