@@ -1,9 +1,7 @@
 # MechaCar_Statistical_Analysis
 
-## Linear Regression to Predict MPG
 
-## Overview of Project
-
+Overview of Project
 A few weeks after starting his new role, Jeremy is approached by upper management about a special project. AutosRUs’ newest prototype, the MechaCar, is suffering from production troubles that are blocking the manufacturing team’s progress. AutosRUs’ upper management has called on Jeremy and the data analytics team to review the production data for insights that may help the manufacturing team.
 
 In this challenge, you’ll help Jeremy and the data analytics team do the following:
@@ -20,12 +18,13 @@ Deliverable 2: Summary Statistics on Suspension Coils
 Deliverable 3: T-Test on Suspension Coils
 Deliverable 4: Design a Study Comparing the MechaCar to the Competition
 
-<img width="960" alt="Deliverable_1" src="https://github.com/Levreka/MechaCar_Statistical_Analysis/blob/main/Images/Deliverable_1.png">
+## Linear Regression to Predict MPG
 
-Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
+<img width="960" alt="Deliverable_1" src="https://user-images.githubusercontent.com/90356052/148167520-104ab4ef-a084-4944-a71b-1a098c64c0dc.png">
+Which variables/coefficients provided a non-random amount of variance to the mpg values in the data set?
 
-Vehicle weight and ground_clearance provide a non-random amount of variance to the mpg values in the data set under the assumption 
-of using a .05 significance level. 
+Vehicle length and ground_clearance provide a non-random amount of variance to the mpg values in the data set under the assumption 
+of using a .05 significance level. That is to say that vehicle length and vehicle ground clearance have significant impact on mpg, while vehicle weight spoiler angle and AWD indicate a random ammount of variance this is shown by their P-values above the .05 assumption
 
 Is the slope of the linear model considered to be zero? Why or why not?
 
