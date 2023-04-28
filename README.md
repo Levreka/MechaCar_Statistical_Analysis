@@ -46,6 +46,10 @@ Lot 1 and Lot 2 are both within design specifications. Lot 3 shows the most vari
 
 ## T-Tests on Suspension Coils
 
-<img width="960" alt="Deliverable3_2" src="https://user-images.githubusercontent.com/90356052/148171741-349c32c9-b609-4890-8017-a04095871df0.png">
 <img width="960" alt="Deliverable_3_1" src="https://user-images.githubusercontent.com/90356052/148171742-5c859a4e-0dee-4c48-896d-0b54fa68eace.png">
+<img width="960" alt="Deliverable3_2" src="https://user-images.githubusercontent.com/90356052/148171741-349c32c9-b609-4890-8017-a04095871df0.png">
 
+
+# findings
+
+the first finding we make is that using the one t-test for the entire data set shows that there is no statistical difference between the sample data mean and the population mean looking at the summary image, we can see that our p-value is greater than our .05 significance level 0.51 this means we don't have enough evidence to reject our null hypothesis of there being a statistical difference between the means. Running three more individual test this time by manufacturing lots we arrive to the same conclusion lot_1 with p-value .90, lot_2 with a p-value of .34, lot_3 with a p-value of .63. 
