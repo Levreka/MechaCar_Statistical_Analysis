@@ -28,11 +28,11 @@ of using a .05 significance level. That is to say that vehicle length and vehicl
 
 Is the slope of the linear model considered to be zero? Why or why not?
 
-Our slope is not zero just be looking at the p-value, which is less than 0.05.
+Our slope is not zero just be looking at the p-value, which is less than 0.05 significance level. Is also important to view at the intercept which is significant, this could mean that different variables not included in our model may described the difference in variability. It could also mean that out vehicle_length and ground_clearance may need scaling or transforming to help improve the predictive power of the model.  
 
 Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
 
-Our R-squared value is 67%, which means roughly ~67% of the time the model our model will most likely predict MPG values correctly. Some of the Factors that might contribute some of this variability might be ground clearance and vehicle length. There might be other factors that may contribute to the variability that perhaps were not capture in our data 
+Our R-squared value is 0.7149, which means roughly ~71% of the time our model will most likely predict MPG values correctly.There might be other factors that may contribute to the variability that perhaps were not capture in our data set 
 
 ## Summary Statistics on Suspension Coils
 
